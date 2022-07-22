@@ -1,3 +1,4 @@
+import 'package:fl_components/screens/animared_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../models/menu_option.dart';
@@ -7,11 +8,11 @@ class AppRoutes {
   static const initialRoute = 'home';
 
   static final menuOptions = <MenuOption>[
-    MenuOption(
-        route: 'home',
-        name: 'Home Screen',
-        screen: const HomeScreen(),
-        icon: Icons.home),
+    // MenuOption(
+    //     route: 'home',
+    //     name: 'Home Screen',
+    //     screen: const HomeScreen(),
+    //     icon: Icons.home),
     MenuOption(
         route: 'listview1',
         name: 'List View Screen',
@@ -32,6 +33,21 @@ class AppRoutes {
         name: 'Card View Screen 2',
         screen: const CardScreen(),
         icon: Icons.credit_card),
+    MenuOption(
+        route: 'avatar',
+        name: 'Avatar Screen',
+        screen: const AvatarScreen(),
+        icon: Icons.supervised_user_circle),
+    MenuOption(
+        route: 'animated',
+        name: 'Animated Screen',
+        screen: const AnimatedScreen(),
+        icon: Icons.play_circle_outline_rounded),
+    MenuOption(
+        route: 'input',
+        name: 'Input Screen',
+        screen: const InputScreen(),
+        icon: Icons.input_rounded)
   ];
 
   // static Map<String, Widget Function(BuildContext)> routes = {
@@ -43,6 +59,7 @@ class AppRoutes {
   // };
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
     Map<String, Widget Function(BuildContext)> appRoutes = {};
+    appRoutes.addAll({'home': (BuildContext context) => const HomeScreen()});
 
     for (final option in menuOptions) {
       appRoutes.addAll({option.route: (BuildContext context) => option.screen});
