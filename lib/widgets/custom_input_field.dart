@@ -7,6 +7,10 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? suffixIcon;
   final IconData? icon;
+  final TextInputType? keyboardType;
+  final bool obscureText;
+  final String fromProperty;
+  final Map<String, String> formValues;
 
   const CustomInputField({
     Key? key, 
@@ -14,18 +18,22 @@ class CustomInputField extends StatelessWidget {
     required this.labelText, 
     required this.helperText, 
     this.suffixIcon, 
-    this.icon,
+    this.icon, 
+    this.keyboardType, 
+    this.obscureText = false, 
+    required this.fromProperty, 
+    required this.formValues, 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
+      obscureText: obscureText,
       autofocus: false,
-      initialValue: 'Cualquier cosa',
+      // initialValue: 'Cualquier cosa',
       textCapitalization: TextCapitalization.words,
-      onChanged: ( value ) {
-        print('value: $value');
-      },
+      onChanged: ( value ) => formValues[fromProperty] = value,
       validator: (value){
         if (value == null) {
           return 'Campo requerido';

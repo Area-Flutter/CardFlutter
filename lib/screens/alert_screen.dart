@@ -42,7 +42,7 @@ class AlertScreen extends StatelessWidget {
         context: context,
         builder: (context) {
           return CupertinoAlertDialog(
-            title: Text('Titulo'),
+            title: const Text('Titulo'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
